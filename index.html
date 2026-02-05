@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Huellas | Servicios</title>
+    <title>Huellas</title>
     <meta
       name="description"
       content="Veterinaria Huellas: servicios disponibles y precios."
@@ -12,12 +12,10 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
 
-  <body>
-    <a class="skip-link" href="#contenido">Saltar al contenido</a>
-
+  <body class="huellas">
     <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
       <div class="container">
-        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="./index.html">
           <span class="brand-mark" aria-hidden="true">🐾</span>
           <span class="fw-semibold">Huellas</span>
         </a>
@@ -39,98 +37,23 @@
       </div>
     </nav>
 
-    <header class="hero border-bottom">
-      <div class="container py-5">
-        <div class="row align-items-center g-4">
-          <div class="col-12 col-lg-7">
-            <h1 class="display-6 fw-bold mb-2">Servicios de Veterinaria Huellas</h1>
-            <p class="lead text-secondary mb-4">
-              Conocé lo que ofrecemos y sus precios. Atención profesional, cuidando
-              a quienes más querés.
-            </p>
-            <div class="d-flex flex-wrap gap-2">
-              <a class="btn btn-primary" href="#servicios">Ver servicios</a>
-              <a class="btn btn-outline-secondary" href="#precios"
-                >Ver precios</a
-              >
-            </div>
-          </div>
-          <div class="col-12 col-lg-5">
-            <div class="hero-card p-4 rounded-4 shadow-sm">
-              <p class="mb-1 text-secondary small">Hoy</p>
-              <p class="mb-0 fw-semibold">Cuidamos perros y gatos</p>
-              <hr class="my-3" />
-              <ul class="mb-0 ps-3 text-secondary">
-                <li>Turnos ágiles</li>
-                <li>Precios claros</li>
-                <li>Atención cálida</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
     <main id="contenido" class="container py-5">
-      <section id="servicios" class="mb-5">
-        <div class="d-flex align-items-end justify-content-between flex-wrap gap-3">
-          <div>
-            <h2 class="h3 mb-1">Servicios disponibles</h2>
-            <p class="text-secondary mb-0">
-              Selección de servicios con descripción y precio.
-            </p>
-          </div>
-          <div class="d-flex align-items-center gap-2">
-            <label class="form-label mb-0 small text-secondary" for="filtroServicios"
-              >Filtrar</label
-            >
-            <input
-              id="filtroServicios"
-              class="form-control form-control-sm"
-              type="search"
-              placeholder="Ej: vacunación"
-              autocomplete="off"
-            />
-          </div>
-        </div>
-
-        <div class="row g-3 g-md-4 mt-2" id="servicesGrid" aria-live="polite"></div>
-
-        <div
-          class="alert alert-light border mt-4 mb-0 d-none"
-          id="emptyState"
-          role="status"
-        >
-          No se encontraron servicios para ese filtro.
-        </div>
-      </section>
-
-      <section id="precios">
-        <div class="p-4 p-md-5 rounded-4 border bg-surface">
-          <div class="row g-3 align-items-center">
-            <div class="col-12 col-lg-8">
-              <h2 class="h4 mb-1">Precios transparentes</h2>
-              <p class="text-secondary mb-0">
-                Los precios mostrados son orientativos y pueden variar según el
-                caso. Consultá por turnos y promociones.
-              </p>
+        <div class="d-flex align-items-end justify-content-between flex-wrap gap-3 mb-4">
+            <div class="row align-items-center g-4">
+              <div class="col-12 col-lg-7">
+                <h1 class="display-6 fw-bold mb-2">Cuidemos la salud de tu mascota</h1>
+                <!-- <p class="text-secondary mb-0">Servicios disponibles y precios.</p> -->
+              </div>
+              <!-- Filtro servicios -->
+              <!-- <div class="col-12 col-lg-5">
+                <label class="form-label" for="filtroServicios">Buscar servicio</label>
+                <input type="text" class="form-control" id="filtroServicios" placeholder="Ej: baño, corte..." aria-label="Filtrar servicios" />
+              </div> -->
             </div>
-            <div class="col-12 col-lg-4 text-lg-end">
-              <a class="btn btn-outline-primary" href="#servicios"
-                >Volver a servicios</a
-              >
-            </div>
-          </div>
         </div>
-      </section>
+        <!-- <div id="emptyState" class="alert alert-light border d-none" role="status">No hay servicios para mostrar.</div>
+        <div id="servicesGrid" class="row g-4"></div> -->
     </main>
-
-    <footer class="border-top">
-      <div class="container py-4 d-flex flex-wrap gap-2 justify-content-between">
-        <small class="text-secondary">© <span id="year"></span> Huellas</small>
-        <small class="text-secondary">Hecho con HTML + CSS + JavaScript</small>
-      </div>
-    </footer>
 
     <script src="./src/core/nav.js"></script>
     <script src="./src/core/data.js"></script>
