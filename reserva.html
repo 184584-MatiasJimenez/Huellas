@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
 
-  <body>
+  <body class="huellas">
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
@@ -62,17 +62,17 @@
       </div>
     </header>
 
-    <main id="contenido" class="container py-5">
-      <div class="row g-4">
-        <div class="col-12 col-lg-7">
-          <div class="p-4 p-md-5 rounded-4 border">
-            <h2 class="h4 mb-1">Datos para la reserva</h2>
-            <p class="text-secondary mb-4">
+    <main id="contenido" class="container py-5 reserva-main">
+      <div class="row g-4 reserva-row">
+        <div class="col-12 reserva-form-col">
+          <div class="reserva-form-card p-4 p-md-5 rounded-4 border">
+            <h2 class="h4 reserva-form-title">Datos para la reserva</h2>
+            <p class="text-secondary reserva-form-desc">
               Completá el formulario para asegurar atención para tu mascota.
             </p>
 
-            <form id="bookingForm" novalidate>
-              <div class="row g-3">
+            <form id="bookingForm" class="reserva-form" novalidate>
+              <div class="row reserva-form-row">
                 <div class="col-12">
                   <label class="form-label" for="ownerName"
                     >Nombre (dueño)</label
@@ -94,13 +94,13 @@
                     class="form-control"
                     id="phone"
                     name="phone"
-                    type="tel"
-                    placeholder="Ej: +598 99 123 456"
+                    type="number"
+                    placeholder="Ej: 099 123 456"
                     required
                     inputmode="tel"
                   />
                   <div class="invalid-feedback">
-                    El teléfono debe comenzar con prefijo (ej: +598).
+                    El teléfono no puede estar vacío.
                   </div>
                 </div>
 
@@ -118,8 +118,6 @@
                   />
                   <div class="invalid-feedback">Ingresá un email válido.</div>
                 </div>
-
-                <hr class="my-2" />
 
                 <div class="col-12 col-md-6">
                   <label class="form-label" for="petName"
@@ -176,6 +174,7 @@
                     class="form-select"
                     id="professionalType"
                     name="professionalType"
+                    disabled
                     required
                   >
                     <option value="" selected>Seleccionar</option>
@@ -201,7 +200,6 @@
                   </div>
                 </div>
 
-                <hr class="my-2" />
 
                 <div class="col-12 col-md-6">
                   <label class="form-label" for="date">Fecha</label>
@@ -228,7 +226,7 @@
                   </div>
                 </div>
 
-                <div class="col-12 d-grid d-md-flex gap-2 mt-2">
+                <div class="col-12 reserva-form-actions">
                   <button class="btn btn-primary" type="submit">
                     Confirmar reserva
                   </button>
@@ -240,24 +238,13 @@
             </form>
 
             <div
-              class="alert alert-success mt-4 mb-0 d-none"
+              class="alert alert-success reserva-success d-none"
               id="successBox"
               role="status"
             >
               <div class="fw-semibold mb-1">¡Reserva registrada!</div>
               <div id="successText" class="text-secondary"></div>
             </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-lg-5">
-          <div class="p-4 p-md-5 rounded-4 border bg-surface">
-            <h2 class="h5 mb-2">Ayuda rápida</h2>
-            <ul class="mb-0 ps-3 text-secondary">
-              <li><strong>Teléfono</strong>: debe comenzar con <code>+598</code></li>
-              <li><strong>Fecha</strong>: solo Lun–Vie, hasta 2 meses</li>
-              <li><strong>Horario</strong>: cada 30 min (último 17:30)</li>
-            </ul>
           </div>
         </div>
       </div>
@@ -273,6 +260,7 @@
     <script src="./src/core/nav.js"></script>
     <script src="./src/core/data.js"></script>
     <script src="./src/core/turnos.js"></script>
+    <script src="./src/core/reserva.js"></script>
   </body>
 </html>
 
