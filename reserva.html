@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Huellas | Reserva de turno</title>
+    <meta
+      name="description"
+      content="Reservá un turno para tu mascota en Veterinaria Huellas."
+    />
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="./index.html">
+          <span class="brand-mark" aria-hidden="true">🐾</span>
+          <span class="fw-semibold">Huellas</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          aria-controls="nav"
+          aria-expanded="false"
+          aria-label="Abrir navegación"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse" id="nav">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link active" aria-current="page" href="./reserva.html">Turno</a>
+            <a class="nav-link" href="./listaTurnos.html">Listado de turnos</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero border-bottom">
+      <div class="container py-5">
+        <div class="row align-items-center g-4">
+          <div class="col-12 col-lg-8">
+            <h1 class="display-6 fw-bold mb-2">Reserva de turno</h1>
+            <p class="lead text-secondary mb-0">
+              Turnos de 30 minutos, de lunes a viernes entre 09:00 y 18:00.
+            </p>
+          </div>
+          <div class="col-12 col-lg-4">
+            <div class="hero-card p-4 rounded-4 shadow-sm">
+              <p class="mb-1 text-secondary small">Reglas</p>
+              <ul class="mb-0 ps-3 text-secondary">
+                <li>Sin fechas pasadas</li>
+                <li>Máximo 2 meses de anticipación</li>
+                <li>Horario hábil (Lun–Vie)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="contenido" class="container py-5">
+      <div class="row g-4">
+        <div class="col-12 col-lg-7">
+          <div class="p-4 p-md-5 rounded-4 border">
+            <h2 class="h4 mb-1">Datos para la reserva</h2>
+            <p class="text-secondary mb-4">
+              Completá el formulario para asegurar atención para tu mascota.
+            </p>
+
+            <form id="bookingForm" novalidate>
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="form-label" for="ownerName"
+                    >Nombre (dueño)</label
+                  >
+                  <input
+                    class="form-control"
+                    id="ownerName"
+                    name="ownerName"
+                    type="text"
+                    placeholder="Ej: Juana Fernández"
+                    required
+                  />
+                  <div class="invalid-feedback">El nombre no puede estar vacío.</div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="phone">Teléfono</label>
+                  <input
+                    class="form-control"
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="Ej: +598 99 123 456"
+                    required
+                    inputmode="tel"
+                  />
+                  <div class="invalid-feedback">
+                    El teléfono debe comenzar con prefijo (ej: +598).
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="email">Mail</label>
+                  <input
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="ejemplo@correo.com"
+                    required
+                    inputmode="email"
+                    autocomplete="email"
+                  />
+                  <div class="invalid-feedback">Ingresá un email válido.</div>
+                </div>
+
+                <hr class="my-2" />
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="petName"
+                    >Nombre de mascota</label
+                  >
+                  <input
+                    class="form-control"
+                    id="petName"
+                    name="petName"
+                    type="text"
+                    placeholder="Ej: Lola"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    El nombre de la mascota no puede estar vacío.
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="petType">Tipo de mascota</label>
+                  <select
+                    class="form-select"
+                    id="petType"
+                    name="petType"
+                    required
+                  >
+                    <option value="" selected>Seleccionar</option>
+                    <option value="Perro">Perro</option>
+                    <option value="Gato">Gato</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    El tipo de mascota debe ser Gato o Perro.
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label" for="serviceId">Servicio</label>
+                  <select
+                    class="form-select"
+                    id="serviceId"
+                    name="serviceId"
+                    required
+                  >
+                    <option value="" selected>Cargando servicios…</option>
+                  </select>
+                  <div class="invalid-feedback">Seleccioná un servicio.</div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="professionalType"
+                    >Tipo de profesional</label
+                  >
+                  <select
+                    class="form-select"
+                    id="professionalType"
+                    name="professionalType"
+                    required
+                  >
+                    <option value="" selected>Seleccionar</option>
+                    <option value="veterinario">Veterinaria</option>
+                    <option value="estetica">Estética / Baño</option>
+                  </select>
+                  <div class="invalid-feedback">Seleccioná el tipo de profesional.</div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="professionalId"
+                    >Profesional (opcional)</label
+                  >
+                  <select
+                    class="form-select"
+                    id="professionalId"
+                    name="professionalId"
+                  >
+                    <option value="" selected>Sin preferencia</option>
+                  </select>
+                  <div class="form-text">
+                    Si no elegís uno, asignamos disponibilidad del área.
+                  </div>
+                </div>
+
+                <hr class="my-2" />
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="date">Fecha</label>
+                  <input
+                    class="form-control"
+                    id="date"
+                    name="date"
+                    type="date"
+                    required
+                  />
+                  <div class="invalid-feedback" id="dateError">
+                    La fecha no puede ser pasada y debe ser dentro de 2 meses (Lun–Vie).
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="time">Horario</label>
+                  <select class="form-select" id="time" name="time" required>
+                    <option value="" selected>Seleccionar</option>
+                  </select>
+                  <div class="invalid-feedback" id="timeError">
+                    El horario debe estar entre 09:00 y 18:00 de lunes a viernes, en
+                    turnos de 30 minutos.
+                  </div>
+                </div>
+
+                <div class="col-12 d-grid d-md-flex gap-2 mt-2">
+                  <button class="btn btn-primary" type="submit">
+                    Confirmar reserva
+                  </button>
+                  <button class="btn btn-outline-secondary" type="reset">
+                    Limpiar
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <div
+              class="alert alert-success mt-4 mb-0 d-none"
+              id="successBox"
+              role="status"
+            >
+              <div class="fw-semibold mb-1">¡Reserva registrada!</div>
+              <div id="successText" class="text-secondary"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-5">
+          <div class="p-4 p-md-5 rounded-4 border bg-surface">
+            <h2 class="h5 mb-2">Ayuda rápida</h2>
+            <ul class="mb-0 ps-3 text-secondary">
+              <li><strong>Teléfono</strong>: debe comenzar con <code>+598</code></li>
+              <li><strong>Fecha</strong>: solo Lun–Vie, hasta 2 meses</li>
+              <li><strong>Horario</strong>: cada 30 min (último 17:30)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="border-top">
+      <div class="container py-4 d-flex flex-wrap gap-2 justify-content-between">
+        <small class="text-secondary">© <span id="year"></span> Huellas</small>
+        <small class="text-secondary">Hecho con HTML + CSS + JavaScript</small>
+      </div>
+    </footer>
+
+    <script src="./src/core/nav.js"></script>
+    <script src="./src/core/data.js"></script>
+    <script src="./src/core/turnos.js"></script>
+  </body>
+</html>
+

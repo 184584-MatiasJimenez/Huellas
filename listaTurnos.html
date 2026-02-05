@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Huellas | Backoffice</title>
+    <meta name="description" content="Área de administración - Veterinaria Huellas." />
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="admin-header py-3">
+      <div class="container d-flex flex-wrap align-items-center justify-content-between gap-2">
+        <div class="d-flex align-items-center gap-2">
+          <span class="brand-mark" aria-hidden="true">🐾</span>
+          <span class="fw-semibold">Huellas — Backoffice</span>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <a href="./index.html" class="btn btn-outline-secondary btn-sm">Ir al sitio público</a>
+        </div>
+      </div>
+    </header>
+
+      <main id="contenido" class="container py-4">
+        <h1 class="h3 mb-1">Listado de turnos reservados</h1>
+        <p class="text-secondary mb-4">Turnos ordenados por fecha más reciente para organizar la atención diaria.</p>
+
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Dueño</th>
+                <th>Mascota</th>
+                <th>Teléfono</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Servicio</th>
+                <th>Profesional asignado</th>
+              </tr>
+            </thead>
+            <tbody id="turnosBody">
+              <!-- llenado por admin.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert alert-light border d-none" id="emptyTurnos" role="status">
+          No hay turnos reservados. Las reservas hechas desde <a href="./reserva.html">Reservar turno</a> aparecerán aquí.
+        </div>
+    </main>
+
+    <footer class="border-top mt-auto">
+      <div class="container py-3 d-flex justify-content-between align-items-center">
+        <small class="text-secondary">Backoffice Huellas</small>
+        <a href="./index.html" class="small">Ir al sitio público</a>
+      </div>
+    </footer>
+
+    <script src="./src/core/admin.js"></script>
+  </body>
+</html>
