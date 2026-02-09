@@ -65,6 +65,7 @@
     const professionalName = prof ? prof.name : null;
 
     return {
+      document: (values.document || "").trim(),
       ownerName: (values.ownerName || "").trim(),
       phone: ('+598' + values.phone || "").trim(),
       email: (values.email || "").trim(),
@@ -143,6 +144,7 @@
   }
 
   function validateForm() {
+    const document = $("#document");
     const ownerName = $("#ownerName");
     const phone = $("#phone");
     const email = $("#email");
@@ -154,6 +156,7 @@
     const time = $("#time");
 
     const ownerOk = Boolean(ownerName?.value.trim());
+    const documentOk = Boolean(document?.value.trim());
     const petNameOk = Boolean(petName?.value.trim());
     const petTypeOk = ["Perro", "Gato"].includes(petType?.value);
     const phoneOk = Boolean(phone?.value.trim());
@@ -163,6 +166,7 @@
     const dateOk = validateDate(date?.value);
     const timeOk = Boolean(time?.value) && generateTimeSlots().includes(time?.value);
 
+    markInvalid(document, !documentOk);
     markInvalid(ownerName, !ownerOk);
     markInvalid(petName, !petNameOk);
     markInvalid(petType, !petTypeOk);
@@ -174,6 +178,7 @@
     markInvalid(time, !timeOk);
 
     return (
+      documentOk &&
       ownerOk &&
       petNameOk &&
       petTypeOk &&
@@ -192,7 +197,7 @@
     const serviceLabel = svc ? svc.name : values.serviceId;
     const profLabel = prof ? prof.name : "Sin preferencia";
     const areaLabel = values.professionalType === "estetica" ? "Estética / Baño" : "Veterinaria";
-    return `${escapeHtml(values.ownerName)} reservó para ${escapeHtml(values.petName)} (${escapeHtml(values.petType)}). Servicio: ${escapeHtml(serviceLabel)}. Área: ${escapeHtml(areaLabel)}. Profesional: ${escapeHtml(profLabel)}. Fecha y hora: ${escapeHtml(values.date)} ${escapeHtml(values.time)}.`;
+    return `${escapeHtml(values.ownerName)} con documento ${escapeHtml(values.document)} reservó para ${escapeHtml(values.petName)} (${escapeHtml(values.petType)}). Servicio: ${escapeHtml(serviceLabel)}. Área: ${escapeHtml(areaLabel)}. Profesional: ${escapeHtml(profLabel)}. Fecha y hora: ${escapeHtml(values.date)} ${escapeHtml(values.time)}.`;
   }
 
   function init() {
@@ -263,12 +268,29 @@
         populateTimeSlots();
         setDateBounds();
         const profType = $("#professionalType");
-        if (profType) profType.value = "";
+        if (profType) {
+          profType.value = "";
+          profType.disabled = false;
+        }
         populateProfessionalsByType("__none__");
       });
     }
 
     populateProfessionalsByType("__none__");
+
+    const params = new URLSearchParams(window.location.search);
+    const servicioId = params.get("servicio");
+    if (servicioId && serviceId) {
+      const svc = services().find((s) => s.id === servicioId);
+      if (svc) {
+        serviceId.value = svc.id;
+        if (svc.professionalType && professionalType) {
+          professionalType.value = svc.professionalType;
+          professionalType.disabled = true;
+          populateProfessionalsByType(svc.professionalType);
+        }
+      }
+    }
   }
 
   init();

@@ -3,16 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Huellas</title>
-    <meta
-      name="description"
-      content="Veterinaria Huellas: servicios disponibles y precios."
-    />
-
+    <title>Huellas | Servicios</title>
+    <meta name="description" content="Servicios disponibles en Veterinaria Huellas: precios y descripción." />
     <link rel="stylesheet" href="./styles.css" />
   </head>
 
   <body class="huellas">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
       <div class="container">
         <a class="navbar-brand d-flex align-items-center gap-2" href="./index.html">
@@ -30,7 +28,7 @@
         </button>
         <div class="navbar-collapse" id="nav">
           <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="./servicios.html">Servicios</a>
+            <a class="nav-link active" aria-current="page" href="./servicios.html">Servicios</a>
             <a class="nav-link" href="./reserva.html">Reservar turno</a>
             <a class="nav-link" href="./listaTurnos.html">Listado de turnos</a>
           </div>
@@ -39,18 +37,24 @@
     </nav>
 
     <main id="contenido" class="container py-5">
-        <div class="d-flex align-items-end justify-content-between flex-wrap gap-3 mb-4">
-            <div class="row align-items-center g-4">
-              <div class="col-12 col-lg-7">
-                <h1 class="display-6 fw-bold mb-2">Cuidemos la salud de tu mascota</h1>
-              </div>
-            </div>
-        </div>
+      <h1 class="display-6 fw-bold mb-2">Servicios</h1>
+      <p class="text-secondary mb-4">Elegí el servicio que necesitás para tu mascota y reservá tu turno.</p>
+
+      <div id="emptyState" class="alert alert-light border d-none" role="status">
+        No hay servicios para mostrar.
+      </div>
+      <div id="servicesGrid" class="row g-4"></div>
     </main>
+
+    <footer class="border-top">
+      <div class="container py-4 d-flex flex-wrap gap-2 justify-content-between">
+        <small class="text-secondary">© <span id="year"></span> Huellas</small>
+        <small class="text-secondary">Hecho con HTML + CSS + JavaScript</small>
+      </div>
+    </footer>
 
     <script src="./src/core/nav.js"></script>
     <script src="./src/core/data.js"></script>
-    <script src="./src/app.js"></script>
+    <script src="./src/core/servicios.js"></script>
   </body>
 </html>
-

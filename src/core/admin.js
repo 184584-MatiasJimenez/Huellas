@@ -55,6 +55,7 @@
       .map(
         (t) => `
         <tr>
+          <td>${escapeHtml(t.document)}</td>
           <td>${escapeHtml(t.ownerName)}</td>
           <td>${escapeHtml(t.petName)}</td>
           <td>${escapeHtml(t.phone)}</td>

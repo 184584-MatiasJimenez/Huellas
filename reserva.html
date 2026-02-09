@@ -32,7 +32,8 @@
         </button>
         <div class="navbar-collapse" id="nav">
           <div class="navbar-nav ms-auto">
-            <a class="nav-link active" aria-current="page" href="./reserva.html">Turno</a>
+            <a class="nav-link" href="./servicios.html">Servicios</a>
+            <a class="nav-link active" aria-current="page" href="./reserva.html">Reservar turno</a>
             <a class="nav-link" href="./listaTurnos.html">Listado de turnos</a>
           </div>
         </div>
@@ -73,6 +74,21 @@
 
             <form id="bookingForm" class="reserva-form" novalidate>
               <div class="row reserva-form-row">
+                <div class="col-12">
+                  <label class="form-label" for="document"
+                    >Cédula de identidad</label
+                  >
+                  <input
+                    class="form-control"
+                    id="document"
+                    name="document"
+                    type="text"
+                    placeholder="Ingresa el documento sin espacios ni guiones"
+                    required
+                  />
+                  <div class="invalid-feedback">El documento no puede estar vacío.</div>
+                </div>
+
                 <div class="col-12">
                   <label class="form-label" for="ownerName"
                     >Nombre (dueño)</label

@@ -368,7 +368,7 @@ body.huellas .container {
 }
 .btn-outline-secondary:hover:not(:disabled) { background: var(--surface); }
 
-.btn-sm { padding: 0.25rem 0.5rem; font-size: 0.875rem; }
+.btn-sm { padding: 0.15rem 0.15rem; font-size: 0.875rem; }
 
 .btn-link {
   background: none;
@@ -474,7 +474,7 @@ body.huellas .container {
   font-weight: 600;
   color: var(--brand);
   background: var(--surface);
-  border: 1px solid var(--surface-alt);
+  border: 2px solid var(--surface-alt);
 }
 
 /* ===== Alerts ===== */
