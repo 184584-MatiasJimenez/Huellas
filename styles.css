@@ -446,7 +446,52 @@ body.huellas .container {
 
 .service-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(59, 130, 246, 0.18);
+  box-shadow: 0 10px 24px var(--brand-alpha-18);
+}
+
+/* ===== Equipo (tarjetas profesionales) ===== */
+.equipo-card {
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.equipo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px var(--brand-alpha-18);
+}
+
+.equipo-card-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--surface-alt);
+  overflow: hidden;
+}
+
+.equipo-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.equipo-card-chip {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-equipo-vet {
+  background: var(--brand);
+  color: var(--white);
+  border: none;
+}
+
+.badge-equipo-estetica {
+  background: var(--info);
+  color: var(--white);
+  border: none;
 }
 
 .h-100 { height: 100%; }

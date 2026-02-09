@@ -280,6 +280,8 @@
 
     const params = new URLSearchParams(window.location.search);
     const servicioId = params.get("servicio");
+    const profesionalId = params.get("profesional");
+
     if (servicioId && serviceId) {
       const svc = services().find((s) => s.id === servicioId);
       if (svc) {
@@ -289,6 +291,17 @@
           professionalType.disabled = true;
           populateProfessionalsByType(svc.professionalType);
         }
+      }
+    }
+
+    if (profesionalId) {
+      const prof = professionals().find((p) => p.id === profesionalId);
+      if (prof && professionalType) {
+        professionalType.value = prof.type;
+        professionalType.disabled = true;
+        populateProfessionalsByType(prof.type);
+        const proSelect = $("#professionalId");
+        if (proSelect) proSelect.value = prof.id;
       }
     }
   }
