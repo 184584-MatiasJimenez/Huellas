@@ -42,6 +42,8 @@
     }
 
     empty.classList.add("d-none");
+    const isAdmin = window.HuellasRole === "admin";
+
     grid.innerHTML = professionals
       .map((p) => {
         const name = escapeHtml(p.name);
@@ -51,6 +53,9 @@
         const chipClass = getTypeChipClass(p.type);
         const reservaUrl = "./reserva.html?profesional=" + encodeURIComponent(p.id);
         const imgAlt = "Foto de " + name;
+        const reservarBtn = isAdmin
+          ? ""
+          : `<div class="mt-auto pt-2"><a href="${reservaUrl}" class="btn btn-sm btn-outline-primary w-100">Reservar turno</a></div>`;
         return `
           <div class="col-12 col-sm-6 col-lg-4">
             <article class="card equipo-card h-100 rounded-4 overflow-hidden">
@@ -61,9 +66,7 @@
               <div class="card-body d-flex flex-column gap-2">
                 <h2 class="h5 mb-0">${name}</h2>
                 <p class="text-secondary mb-0">${role}</p>
-                <div class="mt-auto pt-2">
-                  <a href="${reservaUrl}" class="btn btn-sm btn-outline-primary w-100">Reservar turno</a>
-                </div>
+                ${reservarBtn}
               </div>
             </article>
           </div>

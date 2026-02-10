@@ -16,7 +16,7 @@
     { id: "vet-1", name: "Dra. Ana Silva", type: "veterinario", role: "Clínica", photo: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop" },
     { id: "vet-2", name: "Dr. Martín Rojas", type: "veterinario", role: "Clínica", photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&h=200&fit=crop" },
     { id: "vet-3", name: "Dra. Carla Méndez", type: "veterinario", role: "Clínica", photo: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=200&h=200&fit=crop" },
-    { id: "est-1", name: "Sofía Pereyra", type: "estetica", role: "Estilista", photo: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=200&h=200&fit=crop" },
+    { id: "est-1", name: "Sofía Pereyra", type: "estetica", role: "Estilista", photo: "https://www.cimformacion.com/blog/wp-content/uploads/2020/09/peluquera-seca-perro.jpg" },
     { id: "est-2", name: "Lucas Ferrer", type: "estetica", role: "Estilista", photo: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop" },
   ];
 
