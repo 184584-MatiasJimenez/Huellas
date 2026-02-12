@@ -307,12 +307,13 @@
   }
 
   init();
+
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = init;
+  }
+  
+  if (typeof window !== 'undefined') {
+    window.initReserva = init;
+  }
 })();
 
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = init;
-}
-
-if (typeof window !== 'undefined') {
-  window.initReserva = init;
-}
