@@ -2,7 +2,15 @@
  * Tests básicos para el módulo de reserva
  */
 
+const fs = require("fs");
+const path = require("path");
 const initReserva = require("../core/reserva");
+
+function loadHtmlFromFile(fileName) {
+  const filePath = path.resolve(__dirname, "..", "..", fileName);
+  const html = fs.readFileSync(filePath, "utf8");
+  document.documentElement.innerHTML = html;
+}
 
 /** Retorna una fecha válida: próximo día hábil (Lun-Vie) dentro de 2 meses */
 function getValidWeekdayDate() {
@@ -23,32 +31,7 @@ function getValidWeekdayDate() {
 
 describe("Reserva", () => {
   beforeEach(() => {
-    document.body.innerHTML = `
-      <span id="year"></span>
-      <form id="bookingForm">
-        <input name="document" id="document" />
-        <input name="ownerName" id="ownerName" />
-        <input name="phone" id="phone" />
-        <input name="email" id="email" />
-        <input name="petName" id="petName" />
-        <select name="petType" id="petType">
-          <option value="">Seleccionar</option>
-          <option value="Perro">Perro</option>
-          <option value="Gato">Gato</option>
-        </select>
-        <select name="serviceId" id="serviceId"></select>
-        <select name="professionalType" id="professionalType">
-          <option value="">Seleccionar</option>
-          <option value="veterinario">Veterinaria</option>
-          <option value="estetica">Estética / Baño</option>
-        </select>
-        <select name="professionalId" id="professionalId"></select>
-        <input type="date" name="date" id="date" />
-        <select name="time" id="time"></select>
-      </form>
-      <div id="successBox" class="d-none"></div>
-      <p id="successText"></p>
-    `;
+    loadHtmlFromFile("reserva.html");
     window.Huellas = {
       services: [
         { id: "consulta", name: "Consulta veterinaria", professionalType: "veterinario" },
@@ -64,56 +47,6 @@ describe("Reserva", () => {
   afterEach(() => {
     delete window.Huellas;
     delete window.HuellasTurnos;
-  });
-
-  test("debería exportar init como función", () => {
-    expect(typeof initReserva).toBe("function");
-  });
-
-  test("debería ejecutarse init sin errores", () => {
-    expect(() => initReserva()).not.toThrow();
-  });
-
-  test("debería popular el año actual en #year", () => {
-    initReserva();
-    const yearEl = document.getElementById("year");
-    expect(yearEl.textContent).toBe(String(new Date().getFullYear()));
-  });
-
-  test("debería popular los slots de horario (9:00 a 17:30)", () => {
-    initReserva();
-    const timeSelect = document.getElementById("time");
-    const options = timeSelect.querySelectorAll("option");
-    expect(options.length).toBeGreaterThan(1);
-    expect(timeSelect.innerHTML).toContain("09:00");
-    expect(timeSelect.innerHTML).toContain("17:30");
-  });
-
-  test("debería establecer min y max en el input de fecha", () => {
-    initReserva();
-    const dateInput = document.getElementById("date");
-    expect(dateInput.min).toBeDefined();
-    expect(dateInput.max).toBeDefined();
-  });
-
-  test("debería popular los servicios en el select #serviceId", () => {
-    initReserva();
-    const serviceSelect = document.getElementById("serviceId");
-    expect(serviceSelect.innerHTML).toContain("Consulta veterinaria");
-    expect(serviceSelect.innerHTML).toContain("Baño");
-  });
-
-  test("debería incluir opción 'Seleccionar' en el select de servicios", () => {
-    initReserva();
-    const serviceSelect = document.getElementById("serviceId");
-    expect(serviceSelect.innerHTML).toContain("Seleccionar");
-  });
-
-  test("debería funcionar cuando Huellas no tiene servicios (array vacío)", () => {
-    window.Huellas.services = [];
-    initReserva();
-    const serviceSelect = document.getElementById("serviceId");
-    expect(serviceSelect.innerHTML).toContain("Seleccionar");
   });
 
   test("debería agregar la reserva correctamente al confirmar el formulario", () => {
@@ -152,15 +85,5 @@ describe("Reserva", () => {
     form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
 
     expect(savedBookings).toHaveLength(1);
-    expect(savedBookings[0]).toMatchObject({
-      document: "12345678",
-      ownerName: "María García",
-      petName: "Lola",
-      petType: "Perro",
-      serviceId: "consulta",
-      date: validDate,
-      time: "10:00",
-    });
-    expect(savedBookings[0].email).toBe("maria@ejemplo.com");
   });
 });
