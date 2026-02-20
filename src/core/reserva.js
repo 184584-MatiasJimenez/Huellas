@@ -309,11 +309,11 @@
   init();
 
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = init;
+    module.exports = {init, validateDate, generateTimeSlots};
   }
   
   if (typeof window !== 'undefined') {
     window.initReserva = init;
+    window.validateDate = validateDate;
   }
 })();
-
